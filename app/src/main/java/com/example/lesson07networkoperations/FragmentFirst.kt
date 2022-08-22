@@ -25,6 +25,12 @@ class FragmentFirst : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            //how to return data? Use parentFragmentManager and companion object
+            parentFragmentManager
+                .setFragmentResultListener(KEY_RESULT, viewLifecycleOwner) { _, bundle ->
+                    editText.setText(bundle.getString(KEY_TEXT_RESULT))
+                }
+
             button.setOnClickListener {
                 val text = editText.text.toString()
 // теперь вручную создаем SecondFragment и передаем аргумент из companion object из FragmentSecond
@@ -45,5 +51,10 @@ class FragmentFirst : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val KEY_RESULT = "key_result" //this is a key for fragmentResultListener
+        const val KEY_TEXT_RESULT = "key_text_result" //this is a key for bundle for transfer data
     }
 }

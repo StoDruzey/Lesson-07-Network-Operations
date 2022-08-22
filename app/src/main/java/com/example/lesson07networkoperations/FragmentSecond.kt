@@ -26,7 +26,20 @@ class FragmentSecond : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textView.text = requireArguments().getString(KEY_TEXT)
+//to transfer data to FirstFragment we invoke parentFragmentManager:
+        parentFragmentManager
+            .setFragmentResult(
+                FragmentFirst.KEY_RESULT,
+                bundleOf(
+                    FragmentFirst.KEY_TEXT_RESULT to ""
+                )
+            )
+
+        with(binding) {
+
+        }
+
+        binding.editText.setText(requireArguments().getString(KEY_TEXT))
     }
 
     override fun onDestroyView() {
