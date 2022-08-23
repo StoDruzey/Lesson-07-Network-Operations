@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
 import androidx.fragment.app.Fragment
 import com.example.lesson07networkoperations.databinding.FragmentFirstDialogBinding
 
@@ -26,6 +29,14 @@ class FragmentFirstDialog : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+
+            val colorValue = ContextCompat.getColor(requireContext(), R.color.teal_700)
+            val neutralButtonText = buildSpannedString {
+                color(colorValue) {
+                    append("neutral")
+                }
+            }
+
             button.setOnClickListener {
                 AlertDialog.Builder(requireContext())
                     .setTitle("title")
@@ -36,7 +47,7 @@ class FragmentFirstDialog : Fragment() {
                     .setNegativeButton(android.R.string.cancel) { _, _ ->
 
                     }
-                    .setNeutralButton("neutral") { _, _ ->
+                    .setNeutralButton(neutralButtonText) { _, _ ->
 
                     }
                     .show()
