@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container, FragmentFirstDialog())
+            .add(R.id.container, CustomDialog1())
             .commit()
     }
 }
