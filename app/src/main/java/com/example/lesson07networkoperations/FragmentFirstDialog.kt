@@ -1,13 +1,17 @@
 package com.example.lesson07networkoperations
 
 import android.app.AlertDialog
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
+import androidx.core.text.inSpans
 import androidx.fragment.app.Fragment
 import com.example.lesson07networkoperations.databinding.FragmentFirstDialogBinding
 
@@ -32,7 +36,11 @@ class FragmentFirstDialog : Fragment() {
 
             val colorValue = ContextCompat.getColor(requireContext(), R.color.teal_700)
             val neutralButtonText = buildSpannedString {
-                color(colorValue) {
+//                color(colorValue) {
+//                    append("neutral")
+//                }
+//it is possible to apply several span types:
+                inSpans(ForegroundColorSpan(colorValue), StyleSpan(Typeface.BOLD)) {
                     append("neutral")
                 }
             }
@@ -41,6 +49,7 @@ class FragmentFirstDialog : Fragment() {
                 AlertDialog.Builder(requireContext())
                     .setTitle("title")
                     .setMessage("message")
+                    .setCancelable(false) //to not close over window
                     .setPositiveButton(android.R.string.ok) { _, _ ->
 
                     }
