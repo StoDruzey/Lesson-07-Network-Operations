@@ -1,6 +1,7 @@
 package com.example.lesson07networkoperations
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
@@ -46,19 +47,23 @@ class FragmentFirstDialog : Fragment() {
             }
 
             button.setOnClickListener {
-                AlertDialog.Builder(requireContext())
-                    .setTitle("title")
-                    .setMessage("message")
-                    .setCancelable(false) //to not close over window
-                    .setPositiveButton(android.R.string.ok) { _, _ ->
-
-                    }
-                    .setNegativeButton(android.R.string.cancel) { _, _ ->
-
-                    }
-                    .setNeutralButton(neutralButtonText) { _, _ ->
-
-                    }
+//                AlertDialog.Builder(requireContext())
+//                    .setTitle("title")
+//                    .setMessage("message")
+//                    .setCancelable(false) //to not close over window
+//                    .setPositiveButton(android.R.string.ok) { _, _ ->
+//
+//                    }
+//                    .setNegativeButton(android.R.string.cancel) { _, _ ->
+//
+//                    }
+//                    .setNeutralButton(neutralButtonText) { _, _ ->
+//
+//                    }
+//                    .show()
+// it is possible to invoke data set dialog:
+                DatePickerDialog(requireContext(),
+                    {p0, p1, p2, p3 -> }, 2022, 11, 11)
                     .show()
             }
         }
